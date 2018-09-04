@@ -77,21 +77,36 @@ class App extends Component {
 
   };
 
-  // onClick = () => {
-  //   console.log("clicked");
+  onClick = (id) => {
+    console.log("clicked");
+    console.log(this.state.images.indexOf(id));
+
+
+    // check which image was clicked and increment the count in the case use picks a different image
+    if (this.state.images.indexOf(id) === -1) {
+      this.setState({
+        images: this.state.images.concat(id),
+        count: this.state.count + 1,
+      })
+
+      console.log(this.state.images.count);
+
+      // shuffle images
+      this.setState({
+        images: this.state.images.sort(function (a, b) { return 0.5 - Math.random() })
+      })
+    }
+
+  }
+
+  // onClick = event => {
+  //   console.log(event.target);
   //   this.setState({
   //     images: this.state.images.sort(function (a, b) { return 0.5 - Math.random() })
   //   })
   // }
 
-  onClick = event => {
-    console.log(event.target);
-    this.setState({
-      images: this.state.images.sort(function (a, b) { return 0.5 - Math.random() })
-    })
-  }
-
-
+  // create a function to end the game, clean the memory to start over and show highest score
   render() {
     return (
       <div>
